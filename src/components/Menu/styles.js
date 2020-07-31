@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const NavBar = styled.nav`
     width: 100%;
-    height: 94px;
     z-index: 100;
     display: flex;
     justify-content: space-between;
@@ -21,14 +20,9 @@ const NavBar = styled.nav`
         }
 
         & img{
-            max-width: 168px;
-
-            @media(max-width: 800px){
-            img{
-                max-width: 105px;
-            }
+            max-width: 148px;
+            margin: 22px 0;
         }
-    }
-`;
 
+`
 export default NavBar;

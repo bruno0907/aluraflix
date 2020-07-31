@@ -21,7 +21,7 @@ const Container = styled.ul`
     left: 0;
   }
   .slick-next {
-    right: 16px;
+    right: 30px;
   }
 `;
 

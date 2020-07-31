@@ -6,7 +6,8 @@
   --mediumGrey: #999999;
   --white: #FFFFFF;
   --frontEnd: #6BD1FF;
-  --backEnd: #00C86F;      
+  --backEnd: #00C86F; 
+  --defaultRadius: 2px;     
 }
 
 *{
@@ -35,4 +36,5 @@ button{
 
 a{
   color: inherit;
+  text-decoration: none;
 }

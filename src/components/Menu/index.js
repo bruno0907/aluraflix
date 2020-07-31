@@ -6,7 +6,8 @@ import NavBar from './styles';
 
 import logo from '../../assets/logo.png';
 
-import ButtonLink from './components/ButtonLink';
+// import ButtonLink from './components/ButtonLink';
+import Button from '../Button'
 
 export default function Menu() {
   return (
@@ -14,7 +15,7 @@ export default function Menu() {
       <Link to="/">
         <img src={logo} alt="" />
       </Link>
-      <ButtonLink as={Link} to="/cadastro/video" className="ButtonLink">Novo vídeo</ButtonLink>
+      <Button as={Link} to="/cadastro/video" className="ButtonLink">Novo vídeo</Button>
     </NavBar>
   );
 }

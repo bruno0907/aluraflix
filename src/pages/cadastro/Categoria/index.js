@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 
 import Form from '../../../components/Form'
-import FormField from '../../../components/FormField';
-import Button from '../../../components/Button';
+import FormField from '../../../components/Form/FormField';
+import FormButton from '../../../components/Form/FormButton';
 
 function CadastroCategoria() {
   const initialValues = {
@@ -68,6 +68,14 @@ function CadastroCategoria() {
         />
 
         <FormField
+          label="Link da Categoria"
+          type="text"
+          name="link"
+          value={values.link}
+          onChange={handleChange}
+        />
+
+        <FormField
           label="Cor"
           type="color"
           name="cor"
@@ -83,8 +91,16 @@ function CadastroCategoria() {
           onChange={handleChange}     
         />
 
+        <FormField
+          label="Videos da Categoria"
+          type="text"
+          name="videos"
+          value={values.videos}
+          onChange={handleChange}     
+        />
 
-        <Button type="submit">Cadastrar</Button>
+
+        <FormButton type="submit">Cadastrar</FormButton>
       </Form>
 
       {categorias.length === 0 && (
@@ -97,15 +113,7 @@ function CadastroCategoria() {
         {categorias.map((categoria, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <li key={`${categoria}${index}`}>
-            {categoria.nome}
-            {' '}
-            |
-            {' '}
-            {categoria.descricao}
-            {' '}
-            -
-            {' '}
-            {categoria.cor}
+            {categoria.titulo}
           </li>
         ))}
       </ul>

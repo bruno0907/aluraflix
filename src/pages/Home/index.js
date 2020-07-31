@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Menu from '../../components/Menu'
-
-import dadosIniciais from '../../data/dados_iniciais.json';
 import BannerMain from '../../components/BannerMain';
+import dadosIniciais from '../../data/dados_iniciais.json';
+
 import Carousel from '../../components/Carousel';
 import Footer from '../../components/Footer';
 
-function Home() {
+function Home() {  
+  const [ categorias, setCategorias] = useState([])
+
+  useEffect(() => {
+    const URL = 'http://localhost:3333/categorias'
+
+    fetch(URL).then( async(res) => {
+      const data = await res.json()
+
+      setCategorias([...data,])
+    })
+  }, [])
+
+  useEffect(() => {
+    const URL = 'http://localhost:3333/categorias'
+
+    fetch(URL).then(async(res) => {
+      const data = await res.json();
+      console.log(data)
+      setCategorias([
+        ...data,
+      ])
+    })
+  },[]);
+
+
   return (
     <div style={{ background: "#141414" }}>
       <Menu />
@@ -18,7 +43,15 @@ function Home() {
         videoDescription={"O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"}
       />
 
-      <Carousel
+      {categorias.map((categoria, index) => (
+        <Carousel
+          key={index}
+          ignoreFirstVideo
+          category={categoria}
+        />
+      ))}
+
+      {/* <Carousel
         ignoreFirstVideo
         category={dadosIniciais.categorias[0]}
       />
@@ -41,7 +74,7 @@ function Home() {
 
       <Carousel
         category={dadosIniciais.categorias[5]}
-      />      
+      />       */}
 
       <Footer />
     </div>

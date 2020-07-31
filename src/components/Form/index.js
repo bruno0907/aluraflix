@@ -9,6 +9,6 @@ const Form = styled.form`
     align-items: center;
     justify-content: center;
     padding: 16px;
-    border-radius: 2px;
+    border-radius: var(--defaultRadius);
 `
 export default Form;

@@ -1,56 +1,12 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
-import Proptypes from 'prop-types';
-
-function FormField({
-  label, type, name, value, onChange, 
-}) {
-  const fieldId = `id_${name}`;
-  const isTextArea = type === 'textarea';
-  const tagType = isTextArea ? 'textarea' : 'input';  
-
-  const hasValue = Boolean(value.length);
-
-  return (
-    <FormFieldWrapper>
-      <Label htmlFor={fieldId}>                
-        <Input
-          as={tagType}
-          id={fieldId}
-          type={type}
-          name={name}
-          value={value}
-          hasValue={hasValue}
-          onChange={onChange}
-        />
-        <Label.Text>{label}</Label.Text>
-      </Label>
-    </FormFieldWrapper>
-  );
-}
-
-FormField.defaultProps = {
-  type: 'text',
-  value: '',
-  onChange: () => {},
-  as: 'input',
-};
-
-FormField.prototype = {
-  label: Proptypes.string.isRequired,
-  type: Proptypes.number,
-  name: Proptypes.string.isRequired,
-  value: Proptypes.string,
-  onChange: Proptypes.func.isRequired,
-};
 
 const FormFieldWrapper = styled.div`
   width: 100%;
   margin-top: 25px;
   position: relative;
   textarea{
-    min-height: 150px;
-    resize: vertical;
+    min-height: 100px;
+    resize: none;
     padding-top: 21px;
     padding-left: 19px;
   }
@@ -80,7 +36,7 @@ const Input = styled.input`
   border: 0;
   border-top: solid 3px transparent;  
   border-bottom: solid 3px var(--blackLighter);  
-  border-radius: 4px;
+  border-radius: var(--defaultRadius);
   
   &:focus{
     filter: brightness(1.2);
@@ -99,4 +55,4 @@ const Input = styled.input`
 
 `
 
-export default FormField;
+export { FormFieldWrapper, Label, Input };
