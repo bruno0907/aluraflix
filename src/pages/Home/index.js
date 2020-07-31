@@ -11,37 +11,31 @@ function Home() {
   const [ categorias, setCategorias] = useState([])
 
   useEffect(() => {
-    const URL = 'http://localhost:3333/categorias'
-
-    fetch(URL).then( async(res) => {
-      const data = await res.json()
-
-      setCategorias([...data,])
-    })
-  }, [])
-
-  useEffect(() => {
-    const URL = 'http://localhost:3333/categorias'
+    const URL = 'http://localhost:3333/categorias';
 
     fetch(URL).then(async(res) => {
       const data = await res.json();
-      console.log(data)
-      setCategorias([
-        ...data,
-      ])
-    })
-  },[]);
 
+      setCategorias([...data])
+      
+    })
+  }, [])
+  const bannerContent = categorias.map(content => content).slice(0, 1)
+
+ 
 
   return (
-    <div style={{ background: "#141414" }}>
+    <div>
       <Menu />
-
-      <BannerMain
-        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-        url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription={"O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"}
-      />
+      
+      {bannerContent.map((content, index) => (
+        <BannerMain
+          key={index}
+          videoTitle={content.titulo}
+          url={content.videos[0].url}
+          videoDescription={content.videos[0].titulo}
+        />
+      ))}
 
       {categorias.map((categoria, index) => (
         <Carousel
@@ -49,32 +43,7 @@ function Home() {
           ignoreFirstVideo
           category={categoria}
         />
-      ))}
-
-      {/* <Carousel
-        ignoreFirstVideo
-        category={dadosIniciais.categorias[0]}
-      />
-
-      <Carousel
-        category={dadosIniciais.categorias[1]}
-      />
-
-      <Carousel
-        category={dadosIniciais.categorias[2]}
-      />      
-
-      <Carousel
-        category={dadosIniciais.categorias[3]}
-      />      
-
-      <Carousel
-        category={dadosIniciais.categorias[4]}
-      />      
-
-      <Carousel
-        category={dadosIniciais.categorias[5]}
-      />       */}
+      ))}      
 
       <Footer />
     </div>

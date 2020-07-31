@@ -45,6 +45,8 @@ export const ContentAreaContainer = styled.section`
   justify-content: center;
   position: relative;
   z-index: 10;
+  line-height: 1;
+
   @media (max-width: 800px) {
     padding-top: 100px;
     flex-direction: column;
