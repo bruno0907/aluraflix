@@ -1,15 +1,15 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const ButtonLink = styled.button`
+const ButtonLink = styled.button`
+    background: var(--primary);
     color: var(--white);
-    border: 1px solid var(--white);
     box-sizing: border-box;
     cursor: pointer;
     padding: 12px 32px;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 4px;
     text-decoration: none;     
     transition: opacity .3s;
     display: flex;
@@ -18,7 +18,7 @@ export const ButtonLink = styled.button`
 
     &:hover,
     &:focus {
-    opacity: .5;
+    opacity: .8;
     }
 
     @media (max-width: 800px) {        
@@ -26,8 +26,9 @@ export const ButtonLink = styled.button`
         left: 0;
         right: 0;
         bottom: 0;
-        background: var(--primary);
         border-radius: 0;
         border: 0;
     }
 `
+
+export default ButtonLink;

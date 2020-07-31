@@ -1,12 +1,12 @@
 :root{
   --primary: #2A7AE4;
-  --black: #000000;
-  --blackLighter: #9E9E9E;
-  --grayLight: #F5F5F5;
-  --grayMedium: #e5e5e5;
+  --black: #080808;
+  --lighterBlack: #585858;
+  --lighterGrey: #e2e2e2;
+  --mediumGrey: #999999;
   --white: #FFFFFF;
   --frontEnd: #6BD1FF;
-  --backEnd: #00C86F;  
+  --backEnd: #00C86F;      
 }
 
 *{
@@ -29,6 +29,8 @@ body, #root{
 
 button{
   cursor: pointer;
+  border-radius: 2px;
+  border: 0;
 }
 
 a{

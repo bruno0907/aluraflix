@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const NavBar = styled.nav`
+const NavBar = styled.nav`
     width: 100%;
     height: 94px;
     z-index: 100;
@@ -16,6 +16,10 @@ export const NavBar = styled.nav`
     background: var(--black);
     border-bottom: 2px solid var(--primary);
 
+        @media(max-width: 800px){
+            justify-content: center;
+        }
+
         & img{
             max-width: 168px;
 
@@ -25,4 +29,6 @@ export const NavBar = styled.nav`
             }
         }
     }
-`
+`;
+
+export default NavBar;
