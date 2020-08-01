@@ -1,6 +1,6 @@
 const URL = window.location.hostname.includes('localhost')
-    ? 'https://aluraflix-backend.herokuapp.com/'
-    : 'http://localhost:3333';
+    ? 'http://localhost:3333'
+    : 'https://aluraflix-backend.herokuapp.com';
 
 export default {
     URL,
