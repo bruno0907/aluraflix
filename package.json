@@ -16,9 +16,9 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "server": "json-server --watch db.json",
-    "dev":"concurrently \"yarn start\" \"yarn server --port 3333",
-    "start": "react-scripts start",
+    "server": "node ./server.js",
+    "dev":"concurrently \"yarn start\" \"yarn server",
+    "start": "npm run server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

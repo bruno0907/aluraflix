@@ -1,53 +1,67 @@
 import React, { useState, useEffect } from 'react';
 
-import Menu from '../../components/Menu'
+import PageDefault from '../../components/PageDefault';
 import BannerMain from '../../components/BannerMain';
-import dadosIniciais from '../../data/dados_iniciais.json';
-
 import Carousel from '../../components/Carousel';
-import Footer from '../../components/Footer';
+
+import categoriasRepository from '../../repositories/categorias';
 
 function Home() {  
   const [ categorias, setCategorias] = useState([])
 
   useEffect(() => {
-    const URL = 'http://localhost:3333/categorias';
+    categoriasRepository.getAllWithVideos()
+      .then((categoriasComVideos) => {
+        setCategorias([...categoriasComVideos,])
+      })
+      .catch((e) => {console.log(e.message)});
 
-    fetch(URL).then(async(res) => {
-      const data = await res.json();
-
-      setCategorias([...data])
-      
-    })
-  }, [])
-  const bannerContent = categorias.map(content => content).slice(0, 1)
-
- 
-
+  }, [])  
+  console.log(categorias)
   return (
-    <div>
-      <Menu />
-      
-      {bannerContent.map((content, index) => (
-        <BannerMain
-          key={index}
-          videoTitle={content.titulo}
-          url={content.videos[0].url}
-          videoDescription={content.videos[0].titulo}
-        />
-      ))}
+      <PageDefault paddingAll={0}>
 
-      {categorias.map((categoria, index) => (
-        <Carousel
-          key={index}
-          ignoreFirstVideo
-          category={categoria}
-        />
-      ))}      
+        {categorias.length === 0 && (
+          <div>
+            Loading...
+          </div>
+        )}
 
-      <Footer />
-    </div>
-  );
+        {categorias.length > 0 && (
+
+          categorias.map((categoria, index) => {
+            if(index === 0){
+              return (
+                <div key={Math.random()}>            
+                  <BannerMain
+                    key={Math.random()}
+                    videoTitle={categorias[0].titulo}
+                    url={categorias[0].videos[0].url}
+                    videoDescription={categorias[0].videos[0].titulo}
+                  />
+                  <Carousel
+                    key={Math.random()}
+                    ignoreFirstVideo
+                    category={categoria}
+                  />
+            
+                </div>
+              )
+            }
+
+            return (
+              <Carousel
+                key={Math.random()}
+                category={categoria}
+              />
+            )
+          })
+
+        )}
+
+      </PageDefault>
+    )
+  
 }
 
 export default Home;

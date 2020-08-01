@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 
 import PageDefault from '../../../components/PageDefault';
 
+import useForm from '../../../hooks/useForm'
+
 import Form from '../../../components/Form'
 import FormField from '../../../components/Form/FormField';
 import FormButton from '../../../components/Form/FormButton';
+
+import URL_BACKEND from '../../../config';
 
 function CadastroCategoria() {
   const initialValues = {
@@ -15,34 +19,11 @@ function CadastroCategoria() {
     cor: '#000000',
   };
 
+  const { handleChange, values, clearForm } = useForm(initialValues) // Custom Hook
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(initialValues);
-
-  function setValue(chave, valor) {
-    setValues({
-      ...values,
-      [chave]: valor,
-      // O [chave] entre chaves indica ao javascript que o valor que chave
-      // receberá será dinâmico
-    });
-  }
-
-  function handleChange(e) {
-    setValue(
-      e.target.getAttribute('name'),
-      e.target.value,
-    );
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    setCategorias([...categorias, values]);
-    setValues(initialValues);
-  }
 
   useEffect(() => {
-    const URL = 'http://localhost:3333/categorias'
+    const URL = URL_BACKEND || 'http://localhost:3333/categorias'
 
     fetch(URL).then(async(res) => {
       const data = await res.json();
@@ -50,23 +31,28 @@ function CadastroCategoria() {
         ...data,
       ])
     })
-  },[]);
+  },[]);  
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setCategorias([...categorias, values]);
+    clearForm();
+  }  
 
   return (
 
     <PageDefault>
-
       <Form onSubmit={handleSubmit}>
         <h1>Cadastrar Categoria</h1>
 
         <FormField
-          label="Nome da Categoria"
+          label="Título da Categoria"
           type="text"
-          name="nome"
-          value={values.nome}
+          name="titulo"
+          value={values.titulo}
           onChange={handleChange}
         />
-
         <FormField
           label="Link da Categoria"
           type="text"
@@ -74,7 +60,6 @@ function CadastroCategoria() {
           value={values.link}
           onChange={handleChange}
         />
-
         <FormField
           label="Cor"
           type="color"
@@ -82,7 +67,6 @@ function CadastroCategoria() {
           value={values.cor}
           onChange={handleChange}    
         />
-
         <FormField
           label="Descrição da Categoria"
           type="textarea"
@@ -90,7 +74,6 @@ function CadastroCategoria() {
           value={values.descricao}
           onChange={handleChange}     
         />
-
         <FormField
           label="Videos da Categoria"
           type="text"
@@ -98,8 +81,6 @@ function CadastroCategoria() {
           value={values.videos}
           onChange={handleChange}     
         />
-
-
         <FormButton type="submit">Cadastrar</FormButton>
       </Form>
 
