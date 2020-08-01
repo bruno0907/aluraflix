@@ -17,7 +17,7 @@
   },
   "scripts": {
     "server": "node ./server.js",
-    "dev":"concurrently \"yarn start\" \"yarn server",
+    "dev":"concurrently \"react-scripts start\" \"yarn server --port 3333",
     "start": "npm run server",
     "build": "react-scripts build",
     "test": "react-scripts test",
