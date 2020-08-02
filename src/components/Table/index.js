@@ -38,5 +38,23 @@ export const Body = styled.tbody`
 
 export const Column = styled.td`
     padding: 8px;
-
 `
+
+export const Action = styled.button`
+    width: 110px;
+    height: 44px;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: var(--defaultRadius);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    transition: opacity .3s;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover,
+    &:focus{
+        opacity: .8;
+    }
+` 

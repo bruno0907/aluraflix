@@ -50,6 +50,20 @@
         "text": "Curso sobre aprendizado na Alura",
         "url": "https://alura.com.br/curso-online-aprender-a-aprender-tecnicas-para-seu-autodesenvolvimento"
       }
+    },
+    {
+      "cor": "#000000",
+      "link_extra": {
+        "text": ""
+      },
+      "id": 7
+    },
+    {
+      "cor": "#000000",
+      "link_extra": {
+        "text": ""
+      },
+      "id": 8
     }
   ],
   "videos": [

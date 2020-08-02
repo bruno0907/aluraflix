@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const Table = styled.table`
-    margin: 0 auto;
+export const Table = styled.table`       
     width: 100%;
     border: solid 2px var(--primary);
     padding: 4px;

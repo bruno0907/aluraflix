@@ -48,8 +48,6 @@ function CadastroVideo() {
             clearForm();
             history.push('/')
         })
-        
-        
       }  
 
     return (
@@ -82,16 +80,12 @@ function CadastroVideo() {
                 />
                 <ButtonArea>
                     <Button type="submit">Salvar</Button>
-                    <Button type="reset" secondary>Limpar</Button>
+                    <Button type="reset" secondary>Limpar</Button>                      
                 </ButtonArea>
                 
             </Form>
 
-            <Button>
-                <Link to="/cadastro/categoria">Cadastrar Categoria</Link>
-            </Button>
-
-            
+            <Link to="/cadastro/categoria">Cadastrar Categoria</Link>                  
 
         </PageDefault>
     )

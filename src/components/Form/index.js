@@ -8,7 +8,6 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 16px;
     border-radius: var(--defaultRadius);
 `
 export default Form;

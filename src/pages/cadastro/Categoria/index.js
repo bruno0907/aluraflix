@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import PageDefault from '../../../components/PageDefault';
 
@@ -12,13 +12,14 @@ import ButtonArea from '../../../components/Form/components/ButtonArea';
 
 import Button from '../../../components/Button';
 
-import { Table, Header, Column, Row, Body } from '../../../components/Table'
+import { Table, Header, Column, Row, Body, Action } from '../../../components/Table'
 
 import categoryRepository from '../../../repositories/categorias';
 
 // import { Table, Header, Body } from './styles'
 
 function CadastroCategoria() {
+  const history = useHistory();
   const initialValues = {
     nome: '',
     descricao: '',
@@ -33,14 +34,52 @@ function CadastroCategoria() {
       .then((categorias) => {
         setCategorias([...categorias,])
       })
-  }, [])
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    setCategorias([...categorias, values]);
+    categoryRepository.create({
+      titulo: values.titulo,
+      link: values.link,
+      cor: values.cor,
+      link_extra: {
+        text: values.descricao,
+        url: values.link
+      }
+    }).then(() => {
+      setCategorias([...categorias, categorias])
+      //history.push('/categorias')
+    });
+
     clearForm();
-  }  
+    history.push('/');
+  };
+
+  function removeCategory(id){
+    alert('Deseja mesmo remover a categoria?')
+    categoryRepository.destroy(id)   
+    
+    setCategorias(categorias.filter( categoria => categoria.id !== id ))
+  }
+
+  // function updateCategory(id){
+  //   categoryRepository.update(id, {
+  //     titulo: values.titulo,
+  //     link: values.link,
+  //     cor: values.cor,
+  //     link_extra: {
+  //       text: values.descricao,
+  //       url: values.link
+  //     }
+  //   }).then(() => {
+  //     alert("Category Updated!!!")
+  //   })
+  // }
+
+    
+ 
+
 
   return (
 
@@ -53,6 +92,13 @@ function CadastroCategoria() {
           type="text"
           name="titulo"
           value={values.titulo}
+          onChange={handleChange}
+        />
+        <FormField
+          label="Link da Categoria"
+          type="text"
+          name="link"
+          value={values.link}
           onChange={handleChange}
         />
         <FormField
@@ -93,14 +139,14 @@ function CadastroCategoria() {
         <Body>
           {categorias.map((item) => (             
             <Row key={item.id}>
-                <Column>{item.titulo}</Column>
+                <Column style={{ width: '30%'}}>{item.titulo}</Column>
                 {
                     item.link_extra
                         ? <Column>{item.link_extra.text}</Column>
                         : <Column></Column>
                 }
-                <Column><Link to="/">Editar</Link></Column>
-                <Column><Link to="/">Remover</Link></Column>
+                <Column style={{ width: '130px'}}><Action onClick={() => history.push(`/categoria/update/${item.id}`)}>Editar</Action></Column>
+                <Column style={{ width: '130px'}}><Action onClick={() => removeCategory(item.id)}>Remover</Action></Column>
             </Row>            
           ))}
         </Body>

@@ -11,7 +11,6 @@ const Button = styled.button`
     };
     border-radius: var(--defaultRadius);
     padding: 16px 22px;
-    margin: 22px 0;
     margin-left: ${
         props => props.secondary ? "40px" : ""
     };
@@ -20,10 +19,17 @@ const Button = styled.button`
     font-size: 16px;
     transition: opacity .3s;
     text-decoration: none;
+    text-align: center;
 
     &:hover,
     &:focus{
         opacity: .8;
+    }
+
+    @media(max-width: 800px){
+        margin: 8px 0;
+        width: 100%;
+
     }
 `;
 
