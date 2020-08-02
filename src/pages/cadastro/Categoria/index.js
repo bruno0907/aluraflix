@@ -7,10 +7,16 @@ import PageDefault from '../../../components/PageDefault';
 import useForm from '../../../hooks/useForm'
 
 import Form from '../../../components/Form'
-import FormField from '../../../components/Form/FormField';
-import FormButton from '../../../components/Form/FormButton';
+import FormField from '../../../components/Form/components/FormField';
+import ButtonArea from '../../../components/Form/components/ButtonArea';
 
-import URL_BACKEND from '../../../config';
+import Button from '../../../components/Button';
+
+import { Table, Header, Column, Row, Body } from '../../../components/Table'
+
+import categoryRepository from '../../../repositories/categorias';
+
+// import { Table, Header, Body } from './styles'
 
 function CadastroCategoria() {
   const initialValues = {
@@ -23,15 +29,11 @@ function CadastroCategoria() {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    const URL = URL_BACKEND || 'http://localhost:3333/categorias'
-
-    fetch(URL).then(async(res) => {
-      const data = await res.json();
-      setCategorias([
-        ...data,
-      ])
-    })
-  },[]);  
+    categoryRepository.getAll()
+      .then((categorias) => {
+        setCategorias([...categorias,])
+      })
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -54,13 +56,6 @@ function CadastroCategoria() {
           onChange={handleChange}
         />
         <FormField
-          label="Link da Categoria"
-          type="text"
-          name="link"
-          value={values.link}
-          onChange={handleChange}
-        />
-        <FormField
           label="Cor"
           type="color"
           name="cor"
@@ -74,14 +69,10 @@ function CadastroCategoria() {
           value={values.descricao}
           onChange={handleChange}     
         />
-        <FormField
-          label="Videos da Categoria"
-          type="text"
-          name="videos"
-          value={values.videos}
-          onChange={handleChange}     
-        />
-        <FormButton type="submit">Cadastrar</FormButton>
+        <ButtonArea>
+          <Button type="submit" >Salvar</Button>
+          <Button type="button" secondary>Limpar</Button>
+        </ButtonArea>
       </Form>
 
       {categorias.length === 0 && (
@@ -90,18 +81,30 @@ function CadastroCategoria() {
         </div>
       )}
 
-      <ul>
-        {categorias.map((categoria, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={`${categoria}${index}`}>
-            {categoria.titulo}
-          </li>
-        ))}
-      </ul>
-
-      <Link to="/">
-        Ir para Home
-      </Link>
+      <Table>
+        <Header>
+          <Row>
+            <Column>Titulo</Column>
+            <Column>Descrição</Column>
+            <Column>Editar</Column>
+            <Column>Remover</Column>   
+          </Row>         
+        </Header>
+        <Body>
+          {categorias.map((item) => (             
+            <Row key={item.id}>
+                <Column>{item.titulo}</Column>
+                {
+                    item.link_extra
+                        ? <Column>{item.link_extra.text}</Column>
+                        : <Column></Column>
+                }
+                <Column><Link to="/">Editar</Link></Column>
+                <Column><Link to="/">Remover</Link></Column>
+            </Row>            
+          ))}
+        </Body>
+      </Table>
     </PageDefault>
   );
 }

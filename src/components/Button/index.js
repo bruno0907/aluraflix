@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-    color: var(--white);
-    background: var(--primary);
+    min-width: 180px;
+    min-height: 54px;
+    color: ${
+        props => props.secondary ? "var(--black)" : "var(--white)"
+    };
+    background: ${
+        props => props.secondary ? "var(--mediumGrey)" : "var(--primary)"
+    };
     border-radius: var(--defaultRadius);
     padding: 16px 22px;
     margin: 22px 0;
+    margin-left: ${
+        props => props.secondary ? "40px" : ""
+    };
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -16,16 +25,6 @@ const Button = styled.button`
     &:focus{
         opacity: .8;
     }
-
-    @media (max-width: 800px) {        
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 0;
-        border: 0;
-    }
-
 `;
 
 export default Button;

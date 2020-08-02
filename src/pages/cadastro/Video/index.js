@@ -7,8 +7,8 @@ import Button from '../../../components/Button'
 import useForm from '../../../hooks/useForm';
 
 import Form from '../../../components/Form'
-import FormField from '../../../components/Form/FormField'
-import FormButton from '../../../components/Form/FormButton'
+import FormField from '../../../components/Form/components/FormField'
+import ButtonArea from '../../../components/Form/components/ButtonArea'
 
 import videosRepository from '../../../repositories/videos';
 import categoryRepository from '../../../repositories/categorias';
@@ -80,12 +80,19 @@ function CadastroVideo() {
                     onChange={handleChange}                    
                     suggestions={categoryTitles}
                 />
-                <FormButton type="submit">Cadastrar Vídeo</FormButton>
+                <ButtonArea>
+                    <Button type="submit">Salvar</Button>
+                    <Button type="reset" secondary>Limpar</Button>
+                </ButtonArea>
+                
             </Form>
 
             <Button>
                 <Link to="/cadastro/categoria">Cadastrar Categoria</Link>
             </Button>
+
+            
+
         </PageDefault>
     )
 }

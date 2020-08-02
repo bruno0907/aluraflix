@@ -1,7 +1,7 @@
 :root{
-  --primary: #2A7AE4;
-  --black: #080808;
-  --lighterBlack: #585858;
+  --primary: #BB00C5;
+  --black: #0f0f0f;
+  --lighterBlack: #1f1f1f;
   --lighterGrey: #e2e2e2;
   --mediumGrey: #999999;
   --white: #FFFFFF;
@@ -37,4 +37,8 @@ button{
 a{
   color: inherit;
   text-decoration: none;
+}
+
+a:hover{
+  opacity: .8;
 }
