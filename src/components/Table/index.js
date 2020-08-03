@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
-    margin: 0 auto;
+    margin-top: 22px;
+    margin-bottom: 34px;
     width: 100%;
-    max-width: 960px;
     border: solid 2px var(--primary);
     border-radius: var(--defaultRadius);
     padding: 4px;
@@ -14,6 +14,10 @@ export const Table = styled.table`
 
     @media(max-width: 800px){
         display: none;
+    }
+
+    > span {
+        text-align: left;
     }
 `;
 
@@ -51,7 +55,7 @@ export const Action = styled.button`
     font-size: 14px;
     transition: opacity .3s;
     text-decoration: none;
-    text-align: center;
+    text-align: center;    
 
     &:hover,
     &:focus{

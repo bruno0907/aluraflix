@@ -243,12 +243,6 @@
       "categoriaId": 6,
       "titulo": "Como aprender a programar?",
       "url": "https://www.youtube.com/watch?v=MwCx2qKdbDw&feature=youtu.be"
-    },
-    {
-      "titulo": "Video de teste",
-      "url": "https://www.youtube.com",
-      "categoriaId": 1,
-      "id": 9
     }
   ]
 }

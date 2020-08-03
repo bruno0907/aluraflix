@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
+import { ArrowLeft } from 'react-feather'
 import { Link, useHistory } from 'react-router-dom';
 
 import PageDefault from '../../../components/PageDefault';
 
 import useForm from '../../../hooks/useForm'
+
+import Container from '../../../components/Container'
 
 import Form from '../../../components/Form'
 import FormField from '../../../components/Form/components/FormField';
@@ -67,85 +69,94 @@ function CadastroCategoria() {
   return (
 
     <PageDefault>
-      <Form onSubmit={handleSubmit}>
-        <h1>Cadastrar Categoria</h1>
 
-        <FormField
-          label="Título da Categoria"
-          type="text"
-          name="titulo"
-          value={values.titulo}
-          onChange={handleChange}
-        />
-        <FormField
-          label="Link da Categoria"
-          type="text"
-          name="link"
-          value={values.link}
-          onChange={handleChange}
-        />
-        <FormField
-          label="Cor"
-          type="color"
-          name="cor"
-          value={values.cor}
-          onChange={handleChange}    
-        />
-        <FormField
-          label="Descrição da Categoria"
-          type="textarea"
-          name="descricao"
-          value={values.descricao}
-          onChange={handleChange}     
-        />
-        <ButtonArea>
-          <Button type="submit" >Salvar</Button>
-          <Button type="button" secondary>Limpar</Button>
-        </ButtonArea>
-      </Form>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <h1>Cadastrar Categoria</h1>
 
-      {categorias.length === 0 && (
-        <div>
-          Loading...
-        </div>
-      )}
+          <FormField
+            label="Título da Categoria"
+            type="text"
+            name="titulo"
+            value={values.titulo}
+            onChange={handleChange}
+          />
+          <FormField
+            label="Link da Categoria"
+            type="text"
+            name="link"
+            value={values.link}
+            onChange={handleChange}
+          />
+          <FormField
+            label="Cor"
+            type="color"
+            name="cor"
+            value={values.cor}
+            onChange={handleChange}    
+          />
+          <FormField
+            label="Descrição da Categoria"
+            type="textarea"
+            name="descricao"
+            value={values.descricao}
+            onChange={handleChange}     
+          />
+          <ButtonArea>
+            <Button type="submit" >Salvar</Button>
+            <Button type="button" secondary>Limpar</Button>
+          </ButtonArea>
+        </Form>
 
-      <Table>
-        <Header>
-          <Row>
-            <Column>Titulo</Column>
-            <Column>Descrição</Column>
-            <Column>Editar</Column>
-            <Column>Remover</Column>   
-          </Row>         
-        </Header>
-        <Body>
-          {categorias.map((item) => (             
-            <Row key={item.id}>
-                <Column style={{ width: '30%'}}>{item.titulo}</Column>
-                {
-                    item.link_extra
-                        ? <Column>{item.link_extra.text}</Column>
-                        : <Column></Column>
-                }
-                <Column style={{ width: '130px'}}>
-                  
-                  <Link to={`/editar/categoria/${item.id}`}>                  
-                    <Action>
-                      Editar
+        {categorias.length === 0 && (
+          <div>
+            Loading...
+          </div>
+        )}
+
+        <Table>
+          <Header>
+            <Row>
+              <Column>Titulo</Column>
+              <Column>Descrição</Column>
+              <Column>Editar</Column>
+              <Column>Remover</Column>   
+            </Row>         
+          </Header>
+          <Body>
+            {categorias.map((item) => (             
+              <Row key={item.id}>
+                  <Column style={{ width: '30%'}}>{item.titulo}</Column>
+                  {
+                      item.link_extra
+                          ? <Column>{item.link_extra.text}</Column>
+                          : <Column></Column>
+                  }
+                  <Column style={{ width: '130px'}}>
+                    
+                    <Link to={`/editar/categoria/${item.id}`}>                  
+                      <Action>
+                        Editar
+                      </Action>
+                    </Link>
+
+                    </Column>
+                  <Column style={{ width: '130px'}}>
+                    <Action onClick={() => removeCategory(item.id)}>
+                      Remover
                     </Action>
-                  </Link>
-
                   </Column>
-                <Column style={{ width: '130px'}}>
-                  <Action onClick={() => removeCategory(item.id)}>
-                    Remover
-                  </Action>
-                </Column>
-            </Row>            
-          ))}
-        </Body>
-      </Table>
+              </Row>            
+            ))}
+          </Body>
+        </Table>
+
+        <Link to="/" style={{ display: 'flex', alignItems: 'center'}}>
+          <ArrowLeft color="#FFFFFF" size={24} />
+          <span style={{ marginLeft: '4px'}}>Voltar para a home</span>
+        </Link>
+      </Container>      
+
     </PageDefault>
   );
 }

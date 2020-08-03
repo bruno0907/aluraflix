@@ -4,12 +4,14 @@ const FormFieldWrapper = styled.div`
   width: 100%;
   margin-top: 25px;
   position: relative;
+  
   textarea{
     min-height: 100px;
     resize: none;
     padding-top: 21px;
     padding-left: 19px;
   }
+
   input[type="color"]{
     padding-left: 55px;
     padding: 4px 16px 4px 55px;

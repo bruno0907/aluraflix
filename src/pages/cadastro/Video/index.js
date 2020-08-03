@@ -4,11 +4,13 @@ import { Link, useHistory } from 'react-router-dom'
 import PageDefault from '../../../components/PageDefault'
 import Button from '../../../components/Button'
 
-import useForm from '../../../hooks/useForm';
+import Container from '../../../components/Container'
 
 import Form from '../../../components/Form'
 import FormField from '../../../components/Form/components/FormField'
 import ButtonArea from '../../../components/Form/components/ButtonArea'
+
+import useForm from '../../../hooks/useForm';
 
 import videosRepository from '../../../repositories/videos';
 import categoryRepository from '../../../repositories/categorias';
@@ -49,40 +51,41 @@ function CadastroVideo() {
     return (
 
         <PageDefault>
-            <Form onSubmit={handleSubmit}>
-                <h1>Cadastro de Vídeo</h1>
+            <Container>
+                <Form onSubmit={handleSubmit}>
+                    <h1>Cadastro de Vídeo</h1>
 
-                <FormField
-                    label="Título do Vídeo"
-                    type="text"
-                    name="titulo"
-                    value={values.titulo}
-                    onChange={handleChange}
-                />                               
-                <FormField
-                    label="URL do Vídeo"
-                    type="text"
-                    name="url"
-                    value={values.url}
-                    onChange={handleChange}
-                />                
-                <FormField
-                    label="Categoria do Vídeo"
-                    type="datalist"
-                    name="categoria"
-                    value={values.categoria}
-                    onChange={handleChange}                    
-                    suggestions={categoryTitles}
-                />
-                <ButtonArea>
-                    <Button type="submit">Salvar</Button>
-                    <Button type="reset" secondary>Limpar</Button>                      
-                </ButtonArea>
-                
-            </Form>
+                    <FormField
+                        label="Título do Vídeo"
+                        type="text"
+                        name="titulo"
+                        value={values.titulo}
+                        onChange={handleChange}
+                    />                               
+                    <FormField
+                        label="URL do Vídeo"
+                        type="text"
+                        name="url"
+                        value={values.url}
+                        onChange={handleChange}
+                    />                
+                    <FormField
+                        label="Categoria do Vídeo"
+                        type="datalist"
+                        name="categoria"
+                        value={values.categoria}
+                        onChange={handleChange}                    
+                        suggestions={categoryTitles}
+                    />
+                    <ButtonArea>
+                        <Button type="submit">Salvar</Button>
+                        <Button type="reset" secondary>Limpar</Button>                      
+                    </ButtonArea>
+                    
+                </Form>
 
-            <Link to="/cadastro/categoria">Cadastrar Categoria</Link>                  
-
+                <Link to="/cadastro/categoria">Cadastrar Categoria</Link>                  
+            </Container>
         </PageDefault>
     )
 }

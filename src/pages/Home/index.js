@@ -4,6 +4,8 @@ import PageDefault from '../../components/PageDefault';
 import BannerMain from '../../components/BannerMain';
 import Carousel from '../../components/Carousel';
 
+import LoadingScreen from '../../components/LoadingScreen/';
+
 import categoriasRepository from '../../repositories/categorias';
 
 function Home() {  
@@ -22,9 +24,7 @@ function Home() {
       <PageDefault paddingAll={0}>
 
         {categorias.length === 0 && (
-          <div>
-            Loading...
-          </div>
+          <LoadingScreen />
         )}
 
         {categorias.length > 0 && (

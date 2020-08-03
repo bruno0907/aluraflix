@@ -1,15 +1,19 @@
 import React from 'react'
 
-import Menu from '../../components/Menu'
+import PageDefault from '../../components/PageDefault'
+import Container from '../../components/Container'
+
+import Error404 from '../../assets/error404.webp'
+
 
 export default function Pagina404() {
     return (
-        <>
-        <Menu />
-        <div style={{color: '#FFF', fontSize: 65}}>
-            Página não encontrada!
-        </div>
-        </>
+        <PageDefault>
+            <Container style={{ alignItems: 'center'}}>
+                <img src={Error404} alt="404"/>
+                <h2>Página não encontrada</h2>                
+            </Container>
+        </PageDefault>
 
     )
 }

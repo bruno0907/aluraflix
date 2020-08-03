@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowLeft }  from 'react-feather';
 
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import PageDefault from '../../../components/PageDefault';
 
@@ -104,6 +105,11 @@ function EditarCategoria(route) {
           <Button type="button" secondary>Limpar</Button>
         </ButtonArea>
       </Form>
+
+      <Link to="/cadastro/categoria" style={{ display: 'flex', alignItems: 'center'}}>
+          <ArrowLeft color="#FFFFFF" size={24} />
+          <span style={{ marginLeft: '4px'}}>Voltar para cadastro</span>
+      </Link>
       
     </PageDefault>
   );
