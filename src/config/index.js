@@ -1,3 +1,5 @@
-const URL = 'https://aluraflix-backend.herokuapp.com'
+const URL =  'https://aluraflix-backend.herokuapp.com'
    
-export default URL
+export default {
+    URL,
+}
