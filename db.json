@@ -29,9 +29,14 @@
       }
     },
     {
-      "id": 4,
       "titulo": "Filmes",
-      "cor": "orange"
+      "link": "https://www.youtube.com/feed/storefront?bp=ogUCKAI%3D",
+      "cor": "orange",
+      "link_extra": {
+        "text": "A melhor seleção de filmes do youtube para você !!!!",
+        "url": "https://www.youtube.com/feed/storefront?bp=ogUCKAI%3D"
+      },
+      "id": 4
     },
     {
       "id": 5,
@@ -50,20 +55,6 @@
         "text": "Curso sobre aprendizado na Alura",
         "url": "https://alura.com.br/curso-online-aprender-a-aprender-tecnicas-para-seu-autodesenvolvimento"
       }
-    },
-    {
-      "cor": "#000000",
-      "link_extra": {
-        "text": ""
-      },
-      "id": 7
-    },
-    {
-      "cor": "#000000",
-      "link_extra": {
-        "text": ""
-      },
-      "id": 8
     }
   ],
   "videos": [

@@ -16,15 +16,16 @@ import { Table, Header, Column, Row, Body, Action } from '../../../components/Ta
 
 import categoryRepository from '../../../repositories/categorias';
 
-// import { Table, Header, Body } from './styles'
 
 function CadastroCategoria() {
   const history = useHistory();
+
   const initialValues = {
-    nome: '',
-    descricao: '',
-    cor: '#000000',
-  };
+    titulo: '',
+    link: '',
+    cor: '#000000', 
+    descricao: ''
+  }
 
   const { handleChange, values, clearForm } = useForm(initialValues) // Custom Hook
   const [categorias, setCategorias] = useState([]);
@@ -49,7 +50,7 @@ function CadastroCategoria() {
       }
     }).then(() => {
       setCategorias([...categorias, categorias])
-      //history.push('/categorias')
+      history.push('/categorias')
     });
 
     clearForm();
@@ -62,24 +63,6 @@ function CadastroCategoria() {
     
     setCategorias(categorias.filter( categoria => categoria.id !== id ))
   }
-
-  // function updateCategory(id){
-  //   categoryRepository.update(id, {
-  //     titulo: values.titulo,
-  //     link: values.link,
-  //     cor: values.cor,
-  //     link_extra: {
-  //       text: values.descricao,
-  //       url: values.link
-  //     }
-  //   }).then(() => {
-  //     alert("Category Updated!!!")
-  //   })
-  // }
-
-    
- 
-
 
   return (
 
@@ -145,8 +128,20 @@ function CadastroCategoria() {
                         ? <Column>{item.link_extra.text}</Column>
                         : <Column></Column>
                 }
-                <Column style={{ width: '130px'}}><Action onClick={() => history.push(`/categoria/update/${item.id}`)}>Editar</Action></Column>
-                <Column style={{ width: '130px'}}><Action onClick={() => removeCategory(item.id)}>Remover</Action></Column>
+                <Column style={{ width: '130px'}}>
+                  
+                  <Link to={`/editar/categoria/${item.id}`}>                  
+                    <Action>
+                      Editar
+                    </Action>
+                  </Link>
+
+                  </Column>
+                <Column style={{ width: '130px'}}>
+                  <Action onClick={() => removeCategory(item.id)}>
+                    Remover
+                  </Action>
+                </Column>
             </Row>            
           ))}
         </Body>

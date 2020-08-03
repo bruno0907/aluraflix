@@ -8,6 +8,8 @@ import './index.css';
 import Home from './pages/Home';
 import CadastroVideo from './pages/cadastro/Video'
 import CadastroCategoria from './pages/cadastro/Categoria'
+import EditarCategoria from './pages/editar/Categoria'
+
 import Pagina404 from './pages/404'
 
 ReactDOM.render(
@@ -18,6 +20,7 @@ ReactDOM.render(
       <Route path="/" exact component={Home}/>
       <Route path="/cadastro/video" component={CadastroVideo}/>
       <Route path="/cadastro/categoria" component={CadastroCategoria}/>
+      <Route path="/editar/categoria/:id" component={EditarCategoria}/>
       <Route component={Pagina404}/>
 
     </Switch>    

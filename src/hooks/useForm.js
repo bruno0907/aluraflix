@@ -11,18 +11,18 @@ function useForm(initialValues){
         // O [chave] entre chaves indica ao javascript que o valor que chave
         // receberá será dinâmico
       });
-    }
+    };
   
     function handleChange(e) {
       setValue(
         e.target.getAttribute('name'),
         e.target.value,
       );
-    }
+    };
   
     function clearForm(){
       setValues(initialValues);    
-    }
+    };
   
     return {
       values,

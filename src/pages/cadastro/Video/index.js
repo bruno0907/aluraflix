@@ -27,16 +27,12 @@ function CadastroVideo() {
             })
     }, [])
 
-    console.log(categoryTitles)
-
     function handleSubmit(e) {
         e.preventDefault();    
 
         const categoriaEscolhida = categorias.find((categoria) => {
             return categoria.titulo === values.categoria;
         });
-
-        console.log(values.categoria)
 
         videosRepository.create({
             titulo: values.titulo,

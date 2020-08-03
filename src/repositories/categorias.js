@@ -24,6 +24,18 @@ function getAll() {
         })
 };
 
+function getCategory(id){
+    return fetch(`${CATEGORIES_URL}/${id}`
+    )
+        .then( async(res) => {
+            if(res.ok) {
+                const response = await res.json()
+                console.log('Fetch', response)
+                return response;
+            }            
+        }).catch((e) => { console.log('Error', e)})
+}
+
 function create(data){
     return fetch(`${CATEGORIES_URL}?_embed=videos`, {
         method: 'POST',
@@ -69,6 +81,7 @@ function update(id, data){
 export default {
     getAllWithVideos,
     getAll,
+    getCategory,
     create,
     destroy,
     update
